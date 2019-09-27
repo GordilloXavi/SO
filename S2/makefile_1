@@ -1,5 +1,8 @@
-all:listaParametros
+all:listaParametros run clean
 listaParametros:listaParametros.c
 	gcc listaParametros.c -o listaParametros
+run:
+	./numeros $(params)
+
 clean:
 	rm listaParametros

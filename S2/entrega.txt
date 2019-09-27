@@ -1,0 +1,8 @@
+PREGUNTA 17.¿Qué opción has tenido que añadir al gcc para generar el fichero objecto? ¿Qué opción  has  tenido  que  añadir  al  gcc  para  que  el  compilador  encuentre  el  fichero mis_funciones.h?
+
+para generar el fichero objeto, usamos:
+# gcc -c <fichero.c> <fichero.h>
+
+en el caso de mis_funciones:
+# gcc -c mis_funciones.c mis_ficheros.h
+

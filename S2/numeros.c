@@ -31,11 +31,11 @@ esNumero (char *str)
   int i = 0;
   while (str[i] != '\0')
     {
-      if (i >= MAX_SIZE)
+      if (i >= MAX_SIZE+(str[0]=='-'))
 	return 0;
       if (str[i] < '0' || str[i] > '9')
 	{
-	  if (i == 0 && str[i] != '-' || i != 0)
+	  if (i == 0 && str[i] != '-' || i == 0 && str[i]=='-' && strlen(str) == 1 || i != 0)
 	    return 0;
 	}
       ++i;
