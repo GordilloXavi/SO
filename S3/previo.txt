@@ -1,0 +1,38 @@
+$ Soy el proceso 29025 -> proceso padre
+$ Soy el proceso 29026 -> proceso hijo
+Podemos asumir que el proceso con id más pequeño corresponde al padre, ya que éste ha sido creado antes. 
+
+$ Antes del fork: Soy el proceso 29165
+PADRE: Soy el proceso 29165
+Los DOS: Soy el proceso 29165
+HIJO: Soy el proceso 29166
+Los DOS: Soy el proceso 29166
+
+Antes del fork: Soy el proceso 30085
+PADRE: Soy el proceso 30085
+Solo lo ejecuta el padre: Soy el proceso 30085
+HIJO: Soy el proceso 30086
+El código que ejecuta el proceso hijo es el que está dentro del 'case 0:', ya que la llamada a fork devuelve un 0 si se trata del proceso hijo que se acaba de crear. 
+
+Antes del fork: Soy el proceso 30175
+PADRE: Soy el proceso 30175
+Solo lo ejecuta el padre: Soy el proceso 30175
+HIJO: Soy el proceso 30176
+HIJO acaba: Soy el proceso 30176
+Acaba primero el hijo.
+
+Antes del fork: Soy el proceso 30423
+PADRE: Soy el proceso 30423
+HIJO: Soy el proceso 30424
+HIJO:La variable_global vale A y la local a
+PADRE:La variable_global vale A y la local a
+Solo lo ejecuta el padre: Soy el proceso 30423
+
+
+Las salidas pueden ser diferentes, ya que al ejecutarse de manera concurrente, los dos procesos no tiene por qué escribir en el canal de salida en el mismo orden. 
+
+Falta poner los paréntesis en la función escribe_variables()
+
+el proceso lista los contenidos del directorio actual. el mensaje solo aparece una vez ya que después de la llamada a execlp nuestro proceso queda mutado y no ejecuta el resto de lineas de código. 
+
+el programa imprime su pid en pantalla y luego ejecuta el programa ejemplo_fork1, que a su vez invoca un proceso hijo que también imprime su pid en pantalla
