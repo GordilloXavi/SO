@@ -1,0 +1,6 @@
+Pregunta 1:
+No ocurre nada. Sin embargo, cuando pasan 10 segundos imprime el siguiente mensaje por pantalla: 8402 alarm      ./alarm1
+
+Pregunta 2:
+El proceso muere y nunca imprime nada por pantalla. 
+[1]  + 9005 killed     ./alarm1
