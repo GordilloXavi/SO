@@ -1,0 +1,4 @@
+1)
+j: 0000000000201014, se encuentra en la memoria de datos
+i: no podemos saber, se encuentra en el stack o el heap
+suma: 000000000000076a, se encuentra enla memoria de código
