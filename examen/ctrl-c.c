@@ -22,19 +22,35 @@ void error_y_exit(char *msg);
 void trataExitCode(int pid,int exit_code);
 // Ejecuta acciones basadas en el exit code del proceso hijo. 
 
+void trata_ctrl_c(int s) {
+    print("Has pulsado ctrl-c, que te follen!", 1);
+}
+void bloquea_ctrl_c() {
 
+    struct sigaction sa;
+    sigset_t mask;
+
+    //sigemptyset(&mask); // No hay ningún señal bloqueado!
+    //sigfillset(&mask); // Bloquea todos los señales
+    //sigdelset(&mask, SIGINT); // Desbloquea SIGINT (signal interrupt)
+    // Por lo tanto, solo hacemos caso a los señales de tipo SIGINT
+
+    sa.sa_handler = &trata_ctrl_c;
+    //sa.sa_mask = mask;
+    sa.sa_flags = 0; 
+    // Esta variable nos indica qué debemos hacer una vez gestionemos la señal.
+    // Ahora le decimos que no haga nada, pero le podemos decir que ponga reinicie la
+    // mask y el handler, por lo que la segunda señal de tipo SIGINT recibirá el tratamiento 
+    // por defecto (terminar el programa)
+    //sa.sa_flags = SA_RESETHAND; // restaura el tratamiento por defecto del signal
+    sigaction(SIGINT, &sa, NULL);
+
+    while(1);
+}
 
 int main (int argc, char *argv[]) { // Argc is always >= 1. The first arg is the name of the executable.
-
-    Usage();
-    //####    INSERTAR CODI PER FER PROVES  ####
-
-    /* Print arguments: 
-    if (argc == 1) Usage();
-    for (int i = 0; i<argc; ++i) {
-        print(argv[i], 1);
-    }
-    */
+    
+    bloquea_ctrl_c();
 
 }
 
@@ -71,14 +87,13 @@ void trataExitCode(int pid,int exit_code) {
     char buffer[128];
     if (WIFEXITED(exit_code)) {
         statcode = WEXITSTATUS(exit_code);
-        sprintf(buffer,“El proceso %d termina con exit code %d\n”, pid,
+        sprintf(buffer,"El proceso %d termina con exit code %d\n", pid,
         statcode);
         write(1,buffer,strlen(buffer));
     }
     else {
         signcode = WTERMSIG(exit_code);
-        sprintf(buffer,“El proceso %d termina por el signal %d\n”, pid,
-        signcode);
-        write(1,buffer,strlen(buffer));
+        sprintf(buffer,"El proceso %d termina por el signal %d\n", pid,signcode);
+        write(1,buffer,strlen(buffer)); 
     }
 }

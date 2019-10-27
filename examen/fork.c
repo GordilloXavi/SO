@@ -7,8 +7,13 @@ void Usage();
 // Prints a default message explaining the program's usage and exits
 
 void print(char* message, int newline); 
+void print_int(int n, int newline);
 // Prints the specified message (of type char*)
 // If endline == 1 a new line will be printed at the end of the message
+
+void trataExitCode(int pid,int exit_code);
+// Ejecuta acciones basadas en el exit code del proceso hijo. 
+
 
 void crea_un_proces() {
     
@@ -102,10 +107,23 @@ void variables_globals_i_locals() {
 	return 0;
 }
 
+void obtenir_exit_code() {
+	int pid = fork();
+
+	if(pid == 0) {
+		exit(3);
+	}
+	int exit_code;
+	waitpid(pid, &exit_code, 0);
+	
+	trataExitCode(pid, exit_code);
+
+}
+
 int main (int argc, char *argv[]) { // Argc is always >= 1. The first arg is the name of the executable.
 
     // Cridem una de les funcions de creacio de processos per veure el output
-    variables_globals_i_locals();
+    obtenir_exit_code();
 
 
 
@@ -124,4 +142,28 @@ void print(char* message, int newline) {
     sprintf(buf, message);
     if (newline) strcat(buf, "\n");
     write(1,buf,strlen(buf));
+}
+
+void print_int(int n, int newline) {
+	char buf[50];
+    sprintf(buf, "%d", n);
+    if (newline) strcat(buf, "\n");
+    write(1,buf,strlen(buf));
+}
+
+void trataExitCode(int pid,int exit_code) {
+    int statcode,signcode;
+    char buffer[128];
+    if (WIFEXITED(exit_code)) {
+        statcode = WEXITSTATUS(exit_code);
+        sprintf(buffer,“El proceso %d termina con exit code %d\n”, pid,
+        statcode);
+        write(1,buffer,strlen(buffer));
+    }
+    else {
+        signcode = WTERMSIG(exit_code);
+        sprintf(buffer,“El proceso %d termina por el signal %d\n”, pid,
+        signcode);
+        write(1,buffer,strlen(buffer));
+    }
 }
