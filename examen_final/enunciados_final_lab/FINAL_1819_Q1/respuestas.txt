@@ -1,0 +1,10 @@
+¿Cómo puedes averiguar la cantidad de memoria total que ha reservado la llamada a malloc?
+
+¿Qué  línea de comandos has utilizado para crear la pipe?
+
+Mientras el padre espera teclas, averigua, desde Shell y mediante una sola lnea de comandos, cuántos procesos omega se están ejecutando.
+
+
+El fichero "aes.int" lo debes crear desde terminal. Anota en el fichero "respuestas.txt" la línea de comandos que has utilizado para crearlo. Anota también la línea de comandos que has utilizado para averiguar su número de inodo.
+
+

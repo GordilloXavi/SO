@@ -1,0 +1,8 @@
+1- ¿Que tipo de pipe has decidido utilizar en el ejercicio 2? Escribe en el fichero respuestas.txt el comando o llamada a sistema q has utilizado para crear la pipe.
+
+2- Escribe en el fichero respuestas.txt el comando para crear un hard-link al fichero nums_0_99 y llámalo hl_nums_0_99. Escribe también el comando para crear un soft-link al fichero hl_nums_0_99 y llámalo sl_nums_0_99.
+
+3- Escribe en el fichero respuestas.txt el comando para obtener el número de inodo y el número de links de los dos ficheros creados en el apartado anterior.
+
+4. Escribe en el fichero respuestas.txt el comando para obtener la lista de sistemas de ficheros que hay instalados en el fichero y cuantos inodos hay en cada uno, así como cuantos hay libres y utilizados. Copia el resultado del comando en respuestas.txt. 
+

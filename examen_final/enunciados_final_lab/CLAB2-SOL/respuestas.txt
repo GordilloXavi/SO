@@ -1,0 +1,14 @@
+1.a: porque muestra la codificación ASCII correspondiente a cada byte del fichero, pero el fichero esta en formato interno (int)
+
+1.b: se quedaría bloqueado en el open (antes de mutar para empezar a ejecutar "./aleatorios") hasta que otro proceso abra la pipe en modo lectura
+
+2: strace -e read ./todos 5
+
+4.a: stat $HOME
+Lo muestra el campo "links"
+
+4.b: ln -s /dev/pts/1 $HOME/softty
+echo hola > $HOME/softty
+
+4.c: cat /proc/devices
+Hay que comprobar si, dentro del conjunto de dispositivos de character o de bloque (en funcion de la categoria correspondiente) esta presente el major o no.
